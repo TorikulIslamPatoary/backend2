@@ -1,3 +1,7 @@
+app.get("/", (req, res) => {
+    res.send("Backend is running");
+});
+
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
