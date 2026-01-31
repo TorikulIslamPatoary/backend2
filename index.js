@@ -30,6 +30,11 @@ app.get("/", (req, res) => {
     res.send("Backend is running 🚀");
 });
 app.post("/add-student", (req, res) => {
+    console.log("Data received:", req.body);
+    res.json({ success: true });
+});
+
+app.post("/add-student", (req, res) => {
     const { username, roll } = req.body;
 
     const sql = "INSERT INTO students (name, student_id) VALUES (?, ?)";
