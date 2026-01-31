@@ -25,16 +25,22 @@ db.connect(err => {
 });
 
 // API route
+
 app.post("/add-student", (req, res) => {
     const { username, roll } = req.body;
 
     const sql = "INSERT INTO students (name, student_id) VALUES (?, ?)";
-    db.query(sql, [username, roll], (err) => {
+
+    db.query(sql, [username, roll], (err, result) => {
         if (err) {
             console.error(err);
-            return res.status(500).send("DB Error");
+            return res.status(500).json({ success: false });
         }
-        res.send("Student saved successfully");
+        res.json({
+            success: true,
+            message: "Student saved successfully",
+            id: result.insertId
+        });
     });
 });
 
