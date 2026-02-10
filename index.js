@@ -31,9 +31,6 @@ db.connect(err => {
 
 
 // API route
-app.get("/", (req, res) => {
-    res.send("Backend is running 🚀");
-});
 app.post("/add-student", (req, res) => {
     const { username, roll } = req.body;
 
