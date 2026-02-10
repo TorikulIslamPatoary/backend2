@@ -22,13 +22,13 @@ const db = mysql.createConnection({
 });
 
 db.connect(err => {
-    if (err) {
-        console.error("DB connection failed:", err);
-    }
-    else{
-    console.log("Connected to MySQL");
-    }
+  if (err) {
+    console.error("DB connection failed:", err.message);
+    return;
+  }
+  console.log("MySQL connected ✅");
 });
+
 
 // API route
 app.get("/", (req, res) => {
@@ -58,7 +58,7 @@ app.post("/add-student", (req, res) => {
 });
 
 // server start
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.MYSQLPORT || 3000;
 app.listen(PORT, () => {
     console.log("Server running on port", PORT);
 });
