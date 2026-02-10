@@ -24,9 +24,10 @@ const db = mysql.createConnection({
 db.connect(err => {
     if (err) {
         console.error("DB connection failed:", err);
-        return;
     }
+    else{
     console.log("Connected to MySQL");
+    }
 });
 
 // API route
