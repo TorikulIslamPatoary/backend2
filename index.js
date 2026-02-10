@@ -35,11 +35,6 @@ app.get("/", (req, res) => {
     res.send("Backend is running 🚀");
 });
 app.post("/add-student", (req, res) => {
-    console.log("Data received:", req.body);
-    res.json({ success: true });
-});
-
-app.post("/add-student", (req, res) => {
     const { username, roll } = req.body;
 
     const sql = "INSERT INTO students (name, student_id) VALUES (?, ?)";
@@ -58,7 +53,7 @@ app.post("/add-student", (req, res) => {
 });
 
 // server start
-const PORT = process.env.MYSQLPORT || 3000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log("Server running on port", PORT);
 });
